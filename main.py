@@ -301,8 +301,8 @@ async def main():
     with open("reports/benchmark_results.json", "w", encoding="utf-8") as f:
         json.dump({"v1": v1_results, "v2": v2_results}, f, ensure_ascii=False, indent=2)
 
-    write_failure_analysis(v2_summary, v2_results)
-    write_reflection_templates()
+    # Keep the group report manually curated. Benchmark runs should update JSON reports
+    # without overwriting analysis/failure_analysis.md.
 
     print("\nRegression summary")
     print(json.dumps(v2_summary["regression"], indent=2))

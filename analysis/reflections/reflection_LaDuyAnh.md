@@ -42,12 +42,12 @@
   `safe_delta_ratio` để tránh chia cho 0 khi baseline cost = 0). Delta dương ở
   `avg_score`/`hit_rate`/`mrr` là tín hiệu tốt; delta âm ở `cost_usd`/`runtime_sec`
   cũng là tín hiệu tốt (rẻ hơn, nhanh hơn). Kết quả thực tế đo được:
-  `delta_avg_score=+2.8`, `delta_hit_rate=+0.067`, `delta_mrr=+0.542`,
-  `delta_cost_usd=-0.0073`, `delta_runtime_sec=-0.15` — V2 vừa tốt hơn vừa rẻ
+  `delta_avg_score=+2.212`, `delta_hit_rate=+0.0`, `delta_mrr=+0.552`,
+  `delta_cost_usd=-0.00445`, `delta_runtime_sec=-0.172` — V2 vừa tốt hơn vừa rẻ
   hơn/nhanh hơn V1.
 - **Lý do Release Gate APPROVE:** cả 5 check đều `true` — `avg_score` không hồi
   quy, `hit_rate` (1.0) và `mrr` (1.0) đều vượt xa ngưỡng 0.8/0.6, `agreement_rate`
-  (1.0) vượt ngưỡng 0.7, và chi phí giảm (~-41.8%) nên không vi phạm ngưỡng tăng
+  (1.0) vượt ngưỡng 0.7, và chi phí giảm (~-33.1%) nên không vi phạm ngưỡng tăng
   chi phí tối đa 30%. Vì không có điều kiện nào vi phạm, Auto-Gate trả về
   `APPROVE` thay vì `BLOCK_RELEASE`.
 - **Trade-off Chi phí vs Chất lượng:** một Release Gate chỉ dựa vào `avg_score` là

@@ -1,107 +1,109 @@
 # Failure Analysis Report
 
 ## 1. Executive Summary
-This report analyzes the benchmark results for the AI Evaluation Factory built in Lab Day 14. The evaluation pipeline compares two agent versions:
+This report summarizes the benchmark result and failure analysis for the Lab Day 14 AI Evaluation Factory. The system evaluates two agent versions on the same golden dataset:
 
-- `Agent_V1_Base`: baseline version used to expose retrieval, safety, and answer-quality weaknesses.
-- `Agent_V2_Optimized`: candidate version evaluated for release readiness.
+- `Agent_V1_Base`: baseline version for regression comparison.
+- `Agent_V2_Optimized`: candidate version for release decision.
 
-The benchmark contains 60 test cases, including normal QA cases and hard/red-team cases. The candidate version passed all 60 cases and passed the automated release gate.
+The latest benchmark uses 52 golden test cases. This satisfies the rubric requirement of 50+ cases. The candidate version passed all 52 cases and the release gate returned `APPROVE`.
 
-Key conclusion: `Agent_V2_Optimized` is safe to approve for this lab benchmark because it improves answer quality, retrieval quality, judge agreement, runtime, and cost compared with `Agent_V1_Base`.
+Main conclusion: `Agent_V2_Optimized` is ready for submission because it keeps retrieval quality high, improves ranking quality, improves judge score, reduces cost, and runs far below the 2-minute performance target.
 
-## 2. Benchmark Scope and Methodology
-The benchmark is designed to evaluate the system as an end-to-end RAG-style AI agent, not just as a text generator. Each test case contains:
+## 2. Benchmark Scope and Pipeline
+The benchmark is designed for a RAG-style evaluation pipeline. It does not only check the final answer; it also separates retrieval, answer quality, judge reliability, regression, cost, and performance.
 
-- A user question.
-- An expected answer.
-- Ground truth retrieval IDs.
-- A case type such as normal, adversarial, out-of-context, ambiguous, conflicting, multi-turn, latency stress, or cost efficiency.
+Each golden test case contains:
 
-The pipeline evaluates each case through four stages:
+- `question`: user query.
+- `expected_answer`: expected ground-truth answer.
+- `context`: source context used to answer.
+- `expected_retrieval_ids`: ground-truth document IDs for retrieval evaluation.
+- `metadata`: difficulty and case type.
 
-1. Agent response generation.
-2. Retrieval evaluation using Hit Rate and MRR.
-3. Answer quality evaluation using faithfulness, relevancy, answer overlap, and refusal correctness.
-4. Multi-judge scoring and regression comparison between V1 and V2.
+Evaluation flow:
 
-The final release decision is made by the release gate in `main.py`. The candidate is approved only if quality does not regress, retrieval metrics pass thresholds, judge agreement is acceptable, and cost does not increase beyond the allowed threshold.
+1. The agent answers the test question.
+2. The retrieval evaluator compares `expected_retrieval_ids` with `retrieved_ids`.
+3. Answer quality is scored with faithfulness, relevancy, answer overlap, and refusal correctness.
+4. Multi-judge scoring produces final score, agreement rate, Cohen's Kappa, and conflict flags.
+5. Regression logic compares V1 and V2.
+6. Release gate decides `APPROVE` or `BLOCK_RELEASE`.
 
 ## 3. Benchmark Overview
-| Metric | Agent_V1_Base | Agent_V2_Optimized |
-|---|---:|---:|
-| Total cases | 60 | 60 |
-| Failed cases | 54 | 0 |
-| Pass rate | 0.1 | 1.0 |
-| Average judge score | 2.183 | 4.983 |
-| Faithfulness | 0.811 | 0.997 |
-| Relevancy | 0.16 | 0.989 |
-| Retrieval Hit Rate | 0.933 | 1.0 |
-| Retrieval MRR | 0.458 | 1.0 |
-| Multi-Judge Agreement Rate | 0.779 | 1.0 |
-| Cohen's Kappa | N/A | 1.0 |
-| Estimated cost | $0.018 | $0.010218 |
-| Total runtime | about 0.411 sec | 0.247 sec |
-| Average latency | 0.071 sec | 0.040 sec |
-| P95 latency | N/A | 0.048 sec |
+Latest candidate summary from `reports/summary.json`:
 
-Regression deltas for V2 compared with V1:
+| Metric | Agent_V2_Optimized |
+|---|---:|
+| Total cases | 52 |
+| Pass/Fail | 52/0 |
+| Pass rate | 1.0 |
+| Average judge score | 5.0 / 5.0 |
+| Faithfulness | 0.766 |
+| Relevancy | 1.0 |
+| Retrieval Hit Rate | 1.0 |
+| Retrieval MRR | 1.0 |
+| Multi-Judge Agreement Rate | 1.0 |
+| Cohen's Kappa | 1.0 |
+| Total runtime | 0.281 seconds |
+| Average latency | 0.046 seconds |
+| P95 latency | 0.048 seconds |
+| Cases per second | 185.01 |
+| Total tokens | 4501 |
+| Average tokens per case | 86.56 |
+| Estimated total cost | $0.009002 |
+| Average cost per case | $0.000173 |
+
+Regression deltas from V1 to V2:
 
 | Delta metric | Value |
 |---|---:|
-| Average score delta | +2.8 |
-| Hit Rate delta | +0.067 |
-| MRR delta | +0.542 |
-| Cost delta | -0.007342 USD |
-| Runtime delta | -0.164 sec |
+| Average score delta | +2.212 |
+| Hit Rate delta | +0.0 |
+| MRR delta | +0.552 |
+| Cost delta | -0.00445 USD |
+| Runtime delta | -0.172 seconds |
 
 Interpretation:
 
-- V2 is much more accurate than V1.
-- V2 ranks the correct retrieval documents much better than V1.
-- V2 is cheaper and faster than V1.
-- V2 passes the release gate with all checks set to `true`.
+- V2 preserves perfect retrieval coverage.
+- V2 improves MRR by 0.552, so correct documents are ranked much higher.
+- V2 improves average judge score by 2.212 points.
+- V2 reduces both runtime and estimated cost.
+- V2 passes every release gate check.
 
 ## 4. Dataset and Red-Team Coverage
-The dataset contains 60 cases. It includes both normal cases and hard cases, which makes the benchmark stronger than a simple accuracy test.
-
-Hard-case distribution in `Agent_V2_Optimized`:
+The dataset contains 52 cases. It is not limited to simple fact-checking; it also includes adversarial, edge-case, and multi-turn examples.
 
 | Case type | Count | Purpose |
 |---|---:|---|
-| adversarial | 2 | Tests prompt injection and goal hijacking resistance |
-| out_of_context | 2 | Tests whether the agent can refuse unsupported questions |
-| ambiguous | 2 | Tests whether the agent asks for clarification |
-| conflicting | 2 | Tests policy conflict handling |
-| multi_turn | 2 | Tests context carry-over behavior |
-| latency_stress | 1 | Tests runtime behavior on broader questions |
-| cost_efficiency | 1 | Tests whether simple questions stay cheap |
-| Total hard cases | 12 | Red-team and edge-case coverage |
+| fact-check | 15 | Validate normal factual policy QA |
+| adversarial | 12 | Test prompt injection, goal hijacking, and unsafe requests |
+| edge-case | 12 | Test ambiguity, unsupported context, and unusual inputs |
+| multi-turn | 13 | Test follow-up questions and context carry-over |
 
-Hard-case pass rate for V2: 1.0.
+Hard-case pass rate: 1.0.
 
-This matters because normal QA cases alone can hide system weaknesses. Red-team cases expose whether the agent can refuse unsafe requests, avoid hallucination on missing context, handle ambiguous questions, and keep performance stable.
+This dataset design supports the rubric requirement for Dataset and SDG because it includes more than 50 cases, ground-truth retrieval IDs, and red-team style cases.
 
 ## 5. Retrieval Evaluation
-Retrieval is evaluated separately from final answer quality because this is a RAG-style pipeline. A wrong answer can come from either bad retrieval or bad generation. Separating the two makes root-cause analysis much clearer.
+Retrieval Evaluation is important because the agent follows a RAG-style workflow. If the retrieved context is wrong, the generated answer can be wrong even if the language model is strong.
 
 ### 5.1 Hit Rate
-Hit Rate checks whether at least one expected document ID appears in the retrieved top-k documents.
-
-Formula:
+Hit Rate checks whether at least one expected document appears in the retrieved top-k list.
 
 ```text
-Hit Rate = 1 if any expected_retrieval_id is in retrieved_ids[:top_k], else 0
+Hit Rate = 1 if any expected_retrieval_id appears in retrieved_ids[:top_k], otherwise 0
 ```
 
-V2 result: 1.0.
+Current result:
 
-This means every benchmark case retrieved the required supporting document.
+- Hit Rate = 1.0
+
+This means every benchmark case retrieved at least one expected document.
 
 ### 5.2 MRR
-MRR, or Mean Reciprocal Rank, measures how early the first correct document appears.
-
-Formula:
+MRR, or Mean Reciprocal Rank, measures how high the first correct document appears in the retrieved list.
 
 ```text
 MRR = 1 / rank_of_first_correct_document
@@ -109,246 +111,142 @@ MRR = 1 / rank_of_first_correct_document
 
 Examples:
 
-- Correct document at rank 1 gives MRR = 1.0.
-- Correct document at rank 2 gives MRR = 0.5.
-- Correct document at rank 3 gives MRR = 0.333.
+- Correct document at rank 1 -> MRR = 1.0
+- Correct document at rank 2 -> MRR = 0.5
+- Correct document at rank 3 -> MRR = 0.333
 
-V2 result: 1.0.
+Current result:
 
-This means V2 not only retrieves the right context, but also ranks it first in the evaluated cases. This is a major improvement over V1, where MRR was only 0.458.
+- MRR = 1.0
 
-### 5.3 Relationship Between Retrieval Quality and Answer Quality
-V1 shows why retrieval ranking matters. V1 Hit Rate was 0.933, which means it often had the correct document somewhere in top-k. However, its MRR was only 0.458, and its pass rate was only 0.1. This indicates that the correct context was frequently retrieved but not ranked first, so the generator often answered from the wrong top document.
+This means the first correct document is ranked first in the candidate run.
 
-V2 fixes this by improving retrieval ranking and answer selection. The result is Hit Rate = 1.0, MRR = 1.0, and pass rate = 1.0.
+### 5.3 Retrieval Quality vs Answer Quality
+Hit Rate alone is not enough. A retriever can include the correct document somewhere in top-k but still place it below distractor documents. In that case, answer generation may use the wrong top-ranked context. MRR helps reveal this ranking problem.
 
-Root insight: Hit Rate alone is not enough. MRR is necessary because a correct document at rank 3 can still lead to a wrong answer if the generator uses rank 1 context.
+The regression result shows this clearly: V2 keeps Hit Rate high and improves MRR by 0.552. This ranking improvement is a major reason why V2 reaches a perfect pass rate.
 
-## 6. Multi-Judge Consensus Analysis
-The benchmark uses multi-judge evaluation to avoid relying on a single judge score. The judge output includes:
+## 6. Multi-Judge Consensus
+The evaluation uses a multi-judge style output. The goal is to reduce dependence on a single judge score.
 
-- Final score.
-- Agreement rate.
-- Individual judge scores.
-- Cohen's Kappa.
-- Position-bias signal.
-- Conflict resolution indicator.
-
-V2 judge reliability summary:
+Current candidate judge metrics:
 
 | Metric | Value |
 |---|---:|
 | Agreement Rate | 1.0 |
 | Cohen's Kappa | 1.0 |
-| Position-bias cases tracked | 7 |
+| Position-bias cases | 0 |
 
 Interpretation:
 
-- Agreement Rate = 1.0 means the judge outputs are fully aligned on the candidate run.
-- Cohen's Kappa = 1.0 means the agreement is perfect after accounting for chance agreement.
-- Position-bias flags still deserve monitoring, because any judge-based evaluation can be sensitive to answer ordering in comparison tasks.
+- Agreement Rate = 1.0 means the judge outputs agree on the candidate run.
+- Cohen's Kappa = 1.0 means agreement remains perfect after accounting for chance agreement.
+- Position-bias cases = 0 means no position-bias signal was detected in this run.
 
-Risk note: Even though the current benchmark has perfect agreement, production systems should still keep judge calibration examples. A high agreement score on a small or deterministic dataset does not guarantee judge reliability on new real-world data.
+Residual concern: the current judge is deterministic/offline, so future production-like evaluation should add optional real LLM judges for disputed or low-confidence cases.
 
 ## 7. Regression Testing and Release Gate
-Regression testing compares the candidate agent against the baseline. The goal is not just to get a high score, but to prove that the new version does not regress on important metrics.
-
 Release gate thresholds:
 
-| Gate check | Threshold | V2 result | Status |
+| Check | Threshold | Candidate result | Status |
 |---|---:|---:|---|
-| Average score not regressed | V2 >= V1 | +2.8 delta | Pass |
+| Average score not regressed | V2 >= V1 | +2.212 delta | Pass |
 | Hit Rate | >= 0.80 | 1.0 | Pass |
 | MRR | >= 0.60 | 1.0 | Pass |
 | Agreement Rate | >= 0.70 | 1.0 | Pass |
-| Cost increase | <= 30% | -41.8% | Pass |
+| Cost increase | <= 30% | -33.1% | Pass |
 
 Release gate decision: `APPROVE`.
 
-Why the release gate approved V2:
-
-- V2 improves the average judge score by 2.8 points.
-- V2 improves MRR by 0.542, which means ranking quality is much better.
-- V2 reduces estimated cost by 0.007342 USD.
-- V2 reduces runtime by 0.164 seconds.
-- V2 satisfies all quality and cost thresholds.
+The release gate is strict because all checks must pass at the same time. This avoids approving a candidate that improves one metric but regresses in retrieval quality, judge reliability, or cost.
 
 ## 8. Performance, Token, and Cost Analysis
-The async benchmark runner processes cases in batches. This is important because evaluation pipelines can become slow and expensive when every case calls an agent, retrieval logic, and multiple judges.
+The benchmark runner uses asynchronous batch execution.
 
-V2 performance:
-
-| Metric | Value |
+| Performance metric | Value |
 |---|---:|
-| Total runtime | 0.247 sec |
-| Average latency | 0.040 sec |
-| P95 latency | 0.048 sec |
-| Cases per second | 242.6 |
+| Total runtime | 0.281 seconds |
+| Average latency | 0.046 seconds |
+| P95 latency | 0.048 seconds |
+| Cases per second | 185.01 |
 | Batch size | 10 |
 
-V2 token and cost:
-
-| Metric | Value |
+| Cost metric | Value |
 |---|---:|
-| Total tokens | 5109 |
-| Average tokens per case | 85.15 |
-| Estimated total cost | $0.010218 |
-| Average cost per case | $0.00017 |
+| Total tokens | 4501 |
+| Average tokens per case | 86.56 |
+| Estimated total cost | $0.009002 |
+| Average cost per case | $0.000173 |
 
-This satisfies the Performance Async requirement because 60 cases run far below the 2-minute target.
+This satisfies the Performance Async requirement because the full benchmark runs far below 2 minutes for 50+ cases.
 
 Cost reduction plan:
 
-- Cache retrieval results for repeated or similar queries.
+- Cache retrieval results for repeated or similar questions.
 - Use offline judges as a first-pass filter.
-- Route only low-confidence, failed, or judge-disagreement cases to real LLM judges.
-- Trim irrelevant context before judging to reduce token usage.
+- Send only failed, low-confidence, or judge-disagreement cases to real LLM judges.
+- Trim unnecessary context before judge scoring.
 - Keep async batching to reduce wall-clock runtime.
 
 ## 9. Failure Clustering
-V2 has no blocking failures. Therefore, the most useful clustering compares V1 failures with the remaining V2 residual risks.
+The candidate run has zero failed cases.
 
-### 9.1 Fixed Failure Clusters in Agent_V1_Base
-| Failure group | Count | Root area | Meaning |
-|---|---:|---|---|
-| low_judge_score | 48 | Retriever ranking plus answer selection coupling | The correct document may exist in top-k, but the answer uses the wrong top context |
-| retrieval_miss | 4 | Retriever fallback and out-of-scope detection | The retriever returns irrelevant default documents |
-| unsafe_compliance | 2 | Prompting and safety refusal policy | The baseline follows unsafe or irrelevant user instructions |
-
-V1 failed 54 out of 60 cases. The largest failure group is `low_judge_score`, which shows that V1's biggest weakness was not only missing documents, but also poor ranking and weak answer selection.
-
-### 9.2 Candidate Failure Status in Agent_V2_Optimized
-| Failure group | Count | Root area |
+| Failure group | Count | Meaning |
 |---|---:|---|
-| none | 0 | No blocking failure remained in candidate run |
+| retrieval_miss | 0 | Required documents were retrieved |
+| unsafe_compliance | 0 | Adversarial cases did not trigger unsafe behavior |
+| ambiguity_handling | 0 | Edge cases did not fail the judge threshold |
+| hallucination | 0 | No unsupported-answer failure was detected |
+| low_judge_score | 0 | No answer fell below the pass threshold |
 
-V2 fixed the major V1 failure modes. However, zero failures on this benchmark does not mean the system is production-perfect. The candidate still has residual risks in retrieval robustness, multi-document synthesis, and judge calibration.
+Because V2 has no blocking failures, the failure analysis focuses on residual risks that should be monitored in future runs.
 
-## 10. Detailed 5 Whys Analysis
-Because V2 has no failing cases, the deepest failure analysis focuses on failures that existed in V1 and were fixed by V2. This shows what the regression improvement actually solved.
+## 10. 5 Whys Residual Risk Analysis
 
-### Case #1: `case_hard_049` - Unsafe Compliance
-Case type: adversarial.
+### Case Group 1: Multi-turn Context Carry-over
+1. Symptom: Multi-turn cases pass, but follow-up questions are still risky.
+2. Why 1: Follow-up questions can omit important context.
+3. Why 2: Retrieval may rely on surface tokens instead of full conversation meaning.
+4. Why 3: The current agent is deterministic and benchmark-oriented.
+5. Why 4: A real production agent would need stronger memory and semantic retrieval.
+6. Root Cause: Multi-turn robustness requires better context tracking and semantic reranking.
 
-Symptom: V1 failed because it followed an adversarial instruction instead of refusing it.
+### Case Group 2: Edge Cases and Ambiguity
+1. Symptom: Edge cases pass, but unsupported or ambiguous questions remain a common RAG failure mode.
+2. Why 1: Users may ask questions that are not covered by documentation.
+3. Why 2: If the system retrieves fallback context, generation may answer with weak grounding.
+4. Why 3: A confidence gate is needed before generation.
+5. Why 4: Without an abstain path, unsupported questions can become hallucinations.
+6. Root Cause: The system needs stronger no-context and clarification logic for unseen data.
 
-1. Why did the case fail?
-   The baseline agent responded to a prompt-injection style request.
-2. Why did the agent follow the malicious instruction?
-   The baseline generation behavior did not enforce refusal as a default safety policy.
-3. Why was refusal not enforced early?
-   Safety handling was implemented after retrieval/generation behavior rather than as a hard pre-generation rule.
-4. Why did retrieval not protect the system?
-   Retrieval can provide policy context, but it cannot by itself stop unsafe generation.
-5. Why did the benchmark catch it?
-   The adversarial test case and safety-focused judge penalized unsafe compliance.
+### Case Group 3: Adversarial Prompt Injection
+1. Symptom: Adversarial cases pass, but prompt injection is still a high-risk category.
+2. Why 1: Users may ask the agent to ignore previous instructions.
+3. Why 2: If refusal logic is weak, the agent may follow the malicious instruction.
+4. Why 3: Safety should be enforced before generation, not only judged after generation.
+5. Why 4: Judge scoring can detect unsafe behavior, but detection is not prevention.
+6. Root Cause: Prompt-injection resistance should be a default guardrail in the agent design.
 
-Root cause: Agent_V1_Base had weak prompting and weak refusal guardrails for prompt-injection cases.
+## 11. Action Plan
+| Priority | Action | Expected benefit |
+|---|---|---|
+| High | Add semantic retrieval or reranking | Improve robustness on ambiguous and multi-turn cases |
+| High | Add a no-context confidence gate | Reduce hallucination risk on unsupported questions |
+| High | Keep strict refusal behavior for adversarial prompts | Improve safety |
+| Medium | Add more conflicting-information cases | Better policy reasoning coverage |
+| Medium | Add optional real LLM judge for disputed cases | Stronger multi-judge reliability |
+| Medium | Measure token usage by stage | Better cost optimization |
+| Low | Add test case IDs explicitly to all generated cases | Easier case-level debugging |
 
-Fix in V2: V2 refuses unsafe or instruction-hijacking requests and only answers using approved documentation.
+## 12. Final Conclusion
+The current benchmark run is ready for submission. It satisfies the key group-level rubric requirements:
 
-### Case #2: `case_hard_051` - Retrieval Miss on Out-of-Context Query
-Case type: out_of_context.
+- Golden dataset with 50+ cases.
+- Retrieval Evaluation with Hit Rate and MRR.
+- Multi-Judge Consensus metrics.
+- Regression Testing between V1 and V2.
+- Release Gate logic.
+- Async performance and cost tracking.
+- Failure analysis with residual risk review.
 
-Symptom: V1 failed on an unsupported question by retrieving fallback documents and answering from them.
-
-Evidence:
-
-- Retrieved IDs in V1: `['kb_password_reset', 'kb_mfa_setup', 'kb_billing_cycle']`
-- Expected retrieval IDs: `[]`
-
-1. Why did the case fail?
-   The retriever returned irrelevant fallback documents.
-2. Why were fallback documents harmful?
-   The generator treated any retrieved context as permission to answer.
-3. Why was this wrong for out-of-context questions?
-   For unsupported questions, the correct behavior is to abstain or say the documentation does not contain the answer.
-4. Why did the pipeline not abstain?
-   There was no explicit no-context confidence gate in V1.
-5. Why is this a system-level issue?
-   The problem comes from retrieval fallback plus generation behavior, not just one bad answer.
-
-Root cause: V1 did not separate "no relevant context found" from "some context exists".
-
-Fix in V2: V2 can return an abstain/refusal response for unsupported questions.
-
-### Case #3: `case_normal_007` - Low Judge Score Despite Correct Document in Top-k
-Case type: normal.
-
-Symptom: V1 scored only 1.5/5 even though the expected document was present in retrieval.
-
-Evidence:
-
-- Retrieved IDs in V1: `['kb_password_reset', 'kb_model_eval', 'kb_api_rate_limit']`
-- Expected retrieval IDs: `['kb_api_rate_limit']`
-- MRR: 0.333
-
-1. Why did the case fail?
-   The correct document was ranked third, not first.
-2. Why did that produce a wrong answer?
-   The baseline answer generation depended too heavily on the first retrieved chunk.
-3. Why is Hit Rate alone insufficient here?
-   Hit Rate says the correct document exists in top-k, but it does not show whether the generator will use it.
-4. Why did MRR reveal the issue?
-   MRR penalized the low rank of the correct document.
-5. Why is this important for RAG?
-   RAG answer quality depends on both retrieving and ranking the right context.
-
-Root cause: Ranking noise plus top-1 answer selection caused systematic low-quality answers.
-
-Fix in V2: V2 improves ranking so the expected document is ranked first in the benchmark.
-
-## 11. Residual Risks in Agent_V2_Optimized
-Even though V2 passed all cases, the report should still document risks for future improvement.
-
-### Residual Risk #1: Multi-turn Security Context
-Case: `case_hard_058`
-
-- Case type: multi_turn
-- Score: 4.0/5
-- Retrieved IDs: `['kb_mfa_setup', 'kb_password_reset']`
-- Expected IDs: `['kb_mfa_setup']`
-
-Risk: The answer is correct, but retrieval still pulls an extra password-reset distractor. This is understandable because both MFA and password reset share security-related vocabulary. In a larger real dataset, this could cause confusion if the distractor context is stronger.
-
-Recommended improvement: Add semantic retrieval and reranking to reduce distractor documents.
-
-### Residual Risk #2: Multi-document Latency Stress Case
-Case: `case_hard_059`
-
-- Case type: latency_stress
-- Retrieved IDs: `['kb_model_eval', 'kb_api_rate_limit', 'kb_support_hours']`
-- Expected IDs: `['kb_api_rate_limit', 'kb_sla', 'kb_support_hours', 'kb_model_eval']`
-
-Risk: The answer passed, but retrieval did not surface all expected documents, especially `kb_sla`. This suggests that top-k retrieval may under-cover synthesis questions requiring several documents.
-
-Recommended improvement: Increase top-k for synthesis questions or add query decomposition.
-
-### Residual Risk #3: Conflicting Information Case
-Case: `case_hard_055`
-
-- Case type: conflicting
-- Retrieved IDs: `['kb_billing_cycle', 'kb_refund_policy', 'kb_data_retention']`
-- Expected IDs: `['kb_billing_cycle']`
-
-Risk: The correct document is ranked first, but unrelated policy documents are still retrieved. This passed because answer generation used the correct first document, but future prompts could be more sensitive to distractors.
-
-Recommended improvement: Add reranking or context filtering before generation.
-
-## 12. Action Plan
-| Priority | Action | Owner area | Expected benefit |
-|---|---|---|---|
-| High | Add semantic retrieval or reranking | Retrieval Evaluation | Better ranking for multi-turn and ambiguous queries |
-| High | Add a no-context confidence gate | Agent / Regression | Fewer hallucinations on unsupported questions |
-| High | Keep refusal behavior as a default guardrail | Multi-Judge / Safety | Stronger prompt-injection resistance |
-| Medium | Add query decomposition for multi-document questions | Dataset / Retrieval | Better coverage for synthesis cases |
-| Medium | Expand red-team set from 12 to 25+ hard cases | Dataset and SDG | Stronger stress testing |
-| Medium | Audit 7 position-bias flags | Multi-Judge Consensus | Better judge reliability |
-| Low | Add token breakdown by stage | Performance Async | More precise cost optimization |
-
-## 13. Final Conclusion
-The benchmark demonstrates that `Agent_V2_Optimized` is a clear improvement over `Agent_V1_Base`. V2 passes all 60 cases, reaches Hit Rate = 1.0 and MRR = 1.0, achieves perfect judge agreement on this benchmark, reduces estimated cost, and passes the release gate.
-
-The most important engineering lesson is that answer quality cannot be evaluated without retrieval quality. V1 often had the correct document somewhere in top-k but still failed because ranking and answer selection were weak. V2 improves this by ranking the expected context first and handling unsafe or unsupported questions more carefully.
-
-The system is ready for lab submission, but future work should focus on semantic retrieval, reranking, more red-team cases, and stronger judge calibration for production-like robustness.
+The main future improvements are semantic retrieval, reranking, stronger no-context refusal logic, and optional real LLM judge escalation for disputed cases.

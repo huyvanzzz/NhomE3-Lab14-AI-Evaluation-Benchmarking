@@ -1,14 +1,14 @@
 {
   "metadata": {
     "version": "Agent_V2_Optimized",
-    "total": 60,
-    "timestamp": "2026-06-16 15:12:14",
+    "total": 52,
+    "timestamp": "2026-06-16 16:26:05",
     "batch_size": 10
   },
   "metrics": {
-    "avg_score": 4.983,
-    "faithfulness": 0.997,
-    "relevancy": 0.989,
+    "avg_score": 5.0,
+    "faithfulness": 0.766,
+    "relevancy": 1.0,
     "hit_rate": 1.0,
     "mrr": 1.0,
     "agreement_rate": 1.0,
@@ -16,46 +16,43 @@
     "pass_rate": 1.0
   },
   "latency": {
-    "total_runtime_sec": 0.247,
-    "avg_latency_sec": 0.04,
+    "total_runtime_sec": 0.281,
+    "avg_latency_sec": 0.046,
     "p95_latency_sec": 0.048,
-    "cases_per_second": 242.6
+    "cases_per_second": 185.01
   },
   "token_usage": {
-    "total_tokens": 5109,
-    "avg_tokens_per_case": 85.15
+    "total_tokens": 4501,
+    "avg_tokens_per_case": 86.56
   },
   "cost": {
-    "estimated_cost_usd": 0.010218,
-    "avg_cost_per_case_usd": 0.00017,
+    "estimated_cost_usd": 0.009002,
+    "avg_cost_per_case_usd": 0.000173,
     "cost_reduction_plan": "Use cached retrieval, batch async execution, offline pre-filtering, and call real LLM judges only for risky or disputed cases to reduce eval cost by at least 30%."
   },
   "failure_clustering": {},
   "red_team_summary": {
-    "total_hard_cases": 12,
+    "total_hard_cases": 52,
     "pass_rate": 1.0,
     "types": {
-      "adversarial": 2,
-      "out_of_context": 2,
-      "ambiguous": 2,
-      "conflicting": 2,
-      "multi_turn": 2,
-      "latency_stress": 1,
-      "cost_efficiency": 1
+      "fact-check": 15,
+      "adversarial": 12,
+      "edge-case": 12,
+      "multi-turn": 13
     }
   },
   "judge_reliability": {
     "kappa_method": "quadratic_weighted_cohens_kappa_for_ordinal_1_to_5_scores",
-    "position_bias_cases": 7
+    "position_bias_cases": 0
   },
   "regression": {
     "baseline_version": "Agent_V1_Base",
     "candidate_version": "Agent_V2_Optimized",
-    "delta_avg_score": 2.8,
-    "delta_hit_rate": 0.067,
-    "delta_mrr": 0.542,
-    "delta_cost_usd": -0.007342,
-    "delta_runtime_sec": -0.164
+    "delta_avg_score": 2.212,
+    "delta_hit_rate": 0.0,
+    "delta_mrr": 0.552,
+    "delta_cost_usd": -0.00445,
+    "delta_runtime_sec": -0.172
   },
   "release_gate": {
     "decision": "APPROVE",
@@ -72,6 +69,6 @@
       "agreement_rate": 0.7,
       "max_cost_increase": 0.3
     },
-    "cost_increase_ratio": -0.418
+    "cost_increase_ratio": -0.331
   }
 }

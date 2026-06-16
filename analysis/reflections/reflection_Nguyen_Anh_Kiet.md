@@ -28,14 +28,14 @@ Kết quả của mỗi test case bao gồm:
 - kết quả judge
 - failure category và trạng thái pass/fail
 
-Trong hàm `run_all`, tôi sử dụng cơ chế chạy song song theo batch với `batch_size = 10`. Cách này giúp pipeline chạy đủ nhanh, nhưng vẫn kiểm soát được số lượng request đồng thời để tránh gây áp lực quá lớn lên hệ thống hoặc API. Kết quả benchmark cuối cùng cho thấy agent phiên bản tối ưu xử lý **60 cases trong 0.275 giây**, latency trung bình **0.043 giây**, p95 latency **0.047 giây**, và throughput đạt **218.4 cases/giây**.
+Trong hàm `run_all`, tôi sử dụng cơ chế chạy song song theo batch với `batch_size = 10`. Cách này giúp pipeline chạy đủ nhanh, nhưng vẫn kiểm soát được số lượng request đồng thời để tránh gây áp lực quá lớn lên hệ thống hoặc API. Kết quả benchmark cuối cùng cho thấy agent phiên bản tối ưu xử lý **52 cases trong 0.281 giây**, latency trung bình **0.046 giây**, p95 latency **0.048 giây**, và throughput đạt **185.01 cases/giây**.
 
 Tôi cũng đảm bảo output của benchmark có đầy đủ thông tin phục vụ tiêu chí Performance Async:
 
-- tổng số token: 5109
-- token trung bình mỗi case: 85.15
-- tổng chi phí ước tính: 0.010218 USD
-- chi phí trung bình mỗi case: 0.00017 USD
+- tổng số token: 4501
+- token trung bình mỗi case: 86.56
+- tổng chi phí ước tính: 0.009002 USD
+- chi phí trung bình mỗi case: 0.000173 USD
 
 Trong `reports/summary.json`, phần cost reduction plan đề xuất sử dụng cached retrieval, batch async execution, offline pre-filtering, và chỉ gọi real LLM judges cho các case rủi ro hoặc có tranh chấp điểm. Mục tiêu là giảm ít nhất 30% chi phí eval mà vẫn giữ độ tin cậy của benchmark.
 
@@ -73,7 +73,7 @@ Vấn đề kỹ thuật chính là cân bằng giữa tốc độ, độ chi ti
 
 Một vấn đề khác là benchmark result phải đủ chi tiết để phục vụ phân tích sau này. Nếu kết quả chỉ có pass/fail thì rất khó debug. Vì vậy, tôi đưa vào latency, retrieved ids, token usage, cost, judge scores và failure category để nhóm có thể xác định lỗi đến từ retrieval, generation, judge disagreement hay vấn đề cost/performance.
 
-Kết quả cuối cùng đáp ứng tiêu chí Performance Async: 60 cases hoàn thành nhanh hơn rất nhiều so với yêu cầu dưới 2 phút. Báo cáo cũng có đầy đủ số liệu token và cost, phù hợp với tiêu chí chấm điểm của phần hiệu năng.
+Kết quả cuối cùng đáp ứng tiêu chí Performance Async: 52 cases hoàn thành nhanh hơn rất nhiều so với yêu cầu dưới 2 phút cho 50+ cases. Báo cáo cũng có đầy đủ số liệu token và cost, phù hợp với tiêu chí chấm điểm của phần hiệu năng.
 
 ## 4. Bài học rút ra
 

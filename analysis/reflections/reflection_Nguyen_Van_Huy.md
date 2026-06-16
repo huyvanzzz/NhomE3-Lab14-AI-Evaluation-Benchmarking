@@ -4,6 +4,7 @@
 
 - **Họ và tên:** Nguyễn Văn Huy
 - **Mã sinh viên:** 2A202600773
+- **Nhóm:** E3
 - **Vai trò trong nhóm:** Phụ trách phần Đánh giá truy xuất thông tin
 
 ---
