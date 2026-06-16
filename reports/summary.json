@@ -2,7 +2,7 @@
   "metadata": {
     "version": "Agent_V2_Optimized",
     "total": 60,
-    "timestamp": "2026-06-16 15:27:41",
+    "timestamp": "2026-06-16 15:12:14",
     "batch_size": 10
   },
   "metrics": {
@@ -16,10 +16,10 @@
     "pass_rate": 1.0
   },
   "latency": {
-    "total_runtime_sec": 0.285,
-    "avg_latency_sec": 0.046,
+    "total_runtime_sec": 0.247,
+    "avg_latency_sec": 0.04,
     "p95_latency_sec": 0.048,
-    "cases_per_second": 210.63
+    "cases_per_second": 242.6
   },
   "token_usage": {
     "total_tokens": 5109,
@@ -55,7 +55,7 @@
     "delta_hit_rate": 0.067,
     "delta_mrr": 0.542,
     "delta_cost_usd": -0.007342,
-    "delta_runtime_sec": -0.155
+    "delta_runtime_sec": -0.164
   },
   "release_gate": {
     "decision": "APPROVE",
