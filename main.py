@@ -1,9 +1,14 @@
 import asyncio
 import json
 import os
+import sys
 import time
 from engine.runner import BenchmarkRunner
 from agent.main_agent import MainAgent
+
+# Reconfigure stdout to support UTF-8 printing on Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 # Giả lập các components Expert
 class ExpertEvaluator:
