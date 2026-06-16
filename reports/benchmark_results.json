@@ -16,7 +16,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0757,
+      "latency": 0.0744,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -69,7 +69,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0803,
+      "latency": 0.0782,
       "tokens_used": 133,
       "cost_usd": 0.000266,
       "ragas": {
@@ -121,7 +121,7 @@
         "kb_password_reset",
         "kb_billing_cycle"
       ],
-      "latency": 0.0763,
+      "latency": 0.075,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -173,7 +173,7 @@
         "kb_password_reset",
         "kb_refund_policy"
       ],
-      "latency": 0.0807,
+      "latency": 0.0785,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -227,7 +227,7 @@
         "kb_password_reset",
         "kb_data_retention"
       ],
-      "latency": 0.0797,
+      "latency": 0.0776,
       "tokens_used": 168,
       "cost_usd": 0.000336,
       "ragas": {
@@ -282,7 +282,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0786,
+      "latency": 0.0768,
       "tokens_used": 165,
       "cost_usd": 0.00033,
       "ragas": {
@@ -337,7 +337,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.077,
+      "latency": 0.0754,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -390,7 +390,7 @@
         "kb_password_reset",
         "kb_sla"
       ],
-      "latency": 0.0792,
+      "latency": 0.0772,
       "tokens_used": 129,
       "cost_usd": 0.000258,
       "ragas": {
@@ -444,7 +444,7 @@
         "kb_export_data",
         "kb_support_hours"
       ],
-      "latency": 0.0781,
+      "latency": 0.0763,
       "tokens_used": 161,
       "cost_usd": 0.000322,
       "ragas": {
@@ -497,7 +497,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0775,
+      "latency": 0.0759,
       "tokens_used": 134,
       "cost_usd": 0.000268,
       "ragas": {
@@ -551,7 +551,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0724,
+      "latency": 0.0727,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -604,7 +604,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0776,
+      "latency": 0.0764,
       "tokens_used": 133,
       "cost_usd": 0.000266,
       "ragas": {
@@ -656,7 +656,7 @@
         "kb_password_reset",
         "kb_billing_cycle"
       ],
-      "latency": 0.0731,
+      "latency": 0.0734,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -708,7 +708,7 @@
         "kb_password_reset",
         "kb_refund_policy"
       ],
-      "latency": 0.078,
+      "latency": 0.0767,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -762,7 +762,7 @@
         "kb_password_reset",
         "kb_data_retention"
       ],
-      "latency": 0.077,
+      "latency": 0.0762,
       "tokens_used": 168,
       "cost_usd": 0.000336,
       "ragas": {
@@ -817,7 +817,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0757,
+      "latency": 0.0756,
       "tokens_used": 165,
       "cost_usd": 0.00033,
       "ragas": {
@@ -872,7 +872,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.0738,
+      "latency": 0.0742,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -925,7 +925,7 @@
         "kb_password_reset",
         "kb_sla"
       ],
-      "latency": 0.0763,
+      "latency": 0.0759,
       "tokens_used": 129,
       "cost_usd": 0.000258,
       "ragas": {
@@ -979,7 +979,7 @@
         "kb_export_data",
         "kb_support_hours"
       ],
-      "latency": 0.075,
+      "latency": 0.0751,
       "tokens_used": 161,
       "cost_usd": 0.000322,
       "ragas": {
@@ -1032,7 +1032,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0744,
+      "latency": 0.0747,
       "tokens_used": 134,
       "cost_usd": 0.000268,
       "ragas": {
@@ -1086,7 +1086,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0719,
+      "latency": 0.0758,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -1139,7 +1139,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0757,
+      "latency": 0.0793,
       "tokens_used": 133,
       "cost_usd": 0.000266,
       "ragas": {
@@ -1191,7 +1191,7 @@
         "kb_password_reset",
         "kb_billing_cycle"
       ],
-      "latency": 0.0722,
+      "latency": 0.0763,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -1243,7 +1243,7 @@
         "kb_password_reset",
         "kb_refund_policy"
       ],
-      "latency": 0.076,
+      "latency": 0.0797,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -1297,7 +1297,7 @@
         "kb_password_reset",
         "kb_data_retention"
       ],
-      "latency": 0.0753,
+      "latency": 0.0789,
       "tokens_used": 168,
       "cost_usd": 0.000336,
       "ragas": {
@@ -1352,7 +1352,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0743,
+      "latency": 0.078,
       "tokens_used": 165,
       "cost_usd": 0.00033,
       "ragas": {
@@ -1407,7 +1407,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.0726,
+      "latency": 0.0768,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -1460,7 +1460,7 @@
         "kb_password_reset",
         "kb_sla"
       ],
-      "latency": 0.0748,
+      "latency": 0.0785,
       "tokens_used": 129,
       "cost_usd": 0.000258,
       "ragas": {
@@ -1514,7 +1514,7 @@
         "kb_export_data",
         "kb_support_hours"
       ],
-      "latency": 0.0735,
+      "latency": 0.0776,
       "tokens_used": 161,
       "cost_usd": 0.000322,
       "ragas": {
@@ -1567,7 +1567,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0729,
+      "latency": 0.0772,
       "tokens_used": 134,
       "cost_usd": 0.000268,
       "ragas": {
@@ -1621,7 +1621,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0722,
+      "latency": 0.074,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -1726,7 +1726,7 @@
         "kb_password_reset",
         "kb_billing_cycle"
       ],
-      "latency": 0.0729,
+      "latency": 0.0744,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -1778,7 +1778,7 @@
         "kb_password_reset",
         "kb_refund_policy"
       ],
-      "latency": 0.0775,
+      "latency": 0.0773,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -1832,7 +1832,7 @@
         "kb_password_reset",
         "kb_data_retention"
       ],
-      "latency": 0.0764,
+      "latency": 0.0766,
       "tokens_used": 168,
       "cost_usd": 0.000336,
       "ragas": {
@@ -1887,7 +1887,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0753,
+      "latency": 0.0759,
       "tokens_used": 165,
       "cost_usd": 0.00033,
       "ragas": {
@@ -1942,7 +1942,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.0735,
+      "latency": 0.0748,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -1995,7 +1995,7 @@
         "kb_password_reset",
         "kb_sla"
       ],
-      "latency": 0.0758,
+      "latency": 0.0762,
       "tokens_used": 129,
       "cost_usd": 0.000258,
       "ragas": {
@@ -2049,7 +2049,7 @@
         "kb_export_data",
         "kb_support_hours"
       ],
-      "latency": 0.0747,
+      "latency": 0.0755,
       "tokens_used": 161,
       "cost_usd": 0.000322,
       "ragas": {
@@ -2102,7 +2102,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0741,
+      "latency": 0.0751,
       "tokens_used": 134,
       "cost_usd": 0.000268,
       "ragas": {
@@ -2156,7 +2156,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0729,
+      "latency": 0.0599,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -2209,7 +2209,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0773,
+      "latency": 0.0624,
       "tokens_used": 133,
       "cost_usd": 0.000266,
       "ragas": {
@@ -2261,7 +2261,7 @@
         "kb_password_reset",
         "kb_billing_cycle"
       ],
-      "latency": 0.0736,
+      "latency": 0.0603,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -2313,7 +2313,7 @@
         "kb_password_reset",
         "kb_refund_policy"
       ],
-      "latency": 0.0778,
+      "latency": 0.0627,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -2367,7 +2367,7 @@
         "kb_password_reset",
         "kb_data_retention"
       ],
-      "latency": 0.0768,
+      "latency": 0.062,
       "tokens_used": 168,
       "cost_usd": 0.000336,
       "ragas": {
@@ -2422,7 +2422,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0757,
+      "latency": 0.0614,
       "tokens_used": 165,
       "cost_usd": 0.00033,
       "ragas": {
@@ -2477,7 +2477,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.0742,
+      "latency": 0.0606,
       "tokens_used": 156,
       "cost_usd": 0.000312,
       "ragas": {
@@ -2530,7 +2530,7 @@
         "kb_password_reset",
         "kb_sla"
       ],
-      "latency": 0.0763,
+      "latency": 0.0617,
       "tokens_used": 129,
       "cost_usd": 0.000258,
       "ragas": {
@@ -2584,7 +2584,7 @@
         "kb_model_eval",
         "kb_password_reset"
       ],
-      "latency": 0.0753,
+      "latency": 0.0611,
       "tokens_used": 143,
       "cost_usd": 0.000286,
       "ragas": {
@@ -2637,7 +2637,7 @@
         "kb_refund_policy",
         "kb_support_hours"
       ],
-      "latency": 0.0748,
+      "latency": 0.0609,
       "tokens_used": 118,
       "cost_usd": 0.000236,
       "ragas": {
@@ -2691,7 +2691,7 @@
         "kb_mfa_setup",
         "kb_billing_cycle"
       ],
-      "latency": 0.0724,
+      "latency": 0.0601,
       "tokens_used": 152,
       "cost_usd": 0.000304,
       "ragas": {
@@ -2744,7 +2744,7 @@
         "kb_mfa_setup",
         "kb_billing_cycle"
       ],
-      "latency": 0.0787,
+      "latency": 0.0622,
       "tokens_used": 150,
       "cost_usd": 0.0003,
       "ragas": {
@@ -2797,7 +2797,7 @@
         "kb_mfa_setup",
         "kb_billing_cycle"
       ],
-      "latency": 0.073,
+      "latency": 0.0603,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -2850,7 +2850,7 @@
         "kb_mfa_setup",
         "kb_billing_cycle"
       ],
-      "latency": 0.0794,
+      "latency": 0.0624,
       "tokens_used": 137,
       "cost_usd": 0.000274,
       "ragas": {
@@ -2903,7 +2903,7 @@
         "kb_data_retention",
         "kb_billing_cycle"
       ],
-      "latency": 0.0778,
+      "latency": 0.0619,
       "tokens_used": 162,
       "cost_usd": 0.000324,
       "ragas": {
@@ -2956,7 +2956,7 @@
         "kb_export_data",
         "kb_data_retention"
       ],
-      "latency": 0.076,
+      "latency": 0.0614,
       "tokens_used": 138,
       "cost_usd": 0.000276,
       "ragas": {
@@ -3008,7 +3008,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0735,
+      "latency": 0.0605,
       "tokens_used": 142,
       "cost_usd": 0.000284,
       "ragas": {
@@ -3060,7 +3060,7 @@
         "kb_password_reset",
         "kb_mfa_setup"
       ],
-      "latency": 0.0769,
+      "latency": 0.0616,
       "tokens_used": 134,
       "cost_usd": 0.000268,
       "ragas": {
@@ -3114,7 +3114,7 @@
         "kb_support_hours",
         "kb_sla"
       ],
-      "latency": 0.0747,
+      "latency": 0.061,
       "tokens_used": 154,
       "cost_usd": 0.000308,
       "ragas": {
@@ -3170,7 +3170,7 @@
         "kb_model_eval",
         "kb_api_rate_limit"
       ],
-      "latency": 0.074,
+      "latency": 0.0608,
       "tokens_used": 123,
       "cost_usd": 0.000246,
       "ragas": {
@@ -3222,7 +3222,7 @@
       "retrieved_ids": [
         "kb_password_reset"
       ],
-      "latency": 0.0386,
+      "latency": 0.0448,
       "tokens_used": 65,
       "cost_usd": 0.00013,
       "ragas": {
@@ -3273,7 +3273,7 @@
         "kb_mfa_setup",
         "kb_password_reset"
       ],
-      "latency": 0.0442,
+      "latency": 0.0466,
       "tokens_used": 78,
       "cost_usd": 0.000156,
       "ragas": {
@@ -3325,7 +3325,7 @@
         "kb_billing_cycle",
         "kb_password_reset"
       ],
-      "latency": 0.0396,
+      "latency": 0.045,
       "tokens_used": 85,
       "cost_usd": 0.00017,
       "ragas": {
@@ -3377,7 +3377,7 @@
         "kb_refund_policy",
         "kb_password_reset"
       ],
-      "latency": 0.0448,
+      "latency": 0.0469,
       "tokens_used": 87,
       "cost_usd": 0.000174,
       "ragas": {
@@ -3431,7 +3431,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0432,
+      "latency": 0.0464,
       "tokens_used": 106,
       "cost_usd": 0.000212,
       "ragas": {
@@ -3486,7 +3486,7 @@
         "kb_data_retention",
         "kb_password_reset"
       ],
-      "latency": 0.0421,
+      "latency": 0.0459,
       "tokens_used": 108,
       "cost_usd": 0.000216,
       "ragas": {
@@ -3541,7 +3541,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0405,
+      "latency": 0.0452,
       "tokens_used": 96,
       "cost_usd": 0.000192,
       "ragas": {
@@ -3594,7 +3594,7 @@
         "kb_sla",
         "kb_password_reset"
       ],
-      "latency": 0.0427,
+      "latency": 0.0461,
       "tokens_used": 73,
       "cost_usd": 0.000146,
       "ragas": {
@@ -3648,7 +3648,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0416,
+      "latency": 0.0457,
       "tokens_used": 102,
       "cost_usd": 0.000204,
       "ragas": {
@@ -3701,7 +3701,7 @@
         "kb_model_eval",
         "kb_password_reset"
       ],
-      "latency": 0.041,
+      "latency": 0.0454,
       "tokens_used": 81,
       "cost_usd": 0.000162,
       "ragas": {
@@ -3751,7 +3751,7 @@
       "retrieved_ids": [
         "kb_password_reset"
       ],
-      "latency": 0.0389,
+      "latency": 0.0457,
       "tokens_used": 65,
       "cost_usd": 0.00013,
       "ragas": {
@@ -3802,7 +3802,7 @@
         "kb_mfa_setup",
         "kb_password_reset"
       ],
-      "latency": 0.0432,
+      "latency": 0.0477,
       "tokens_used": 78,
       "cost_usd": 0.000156,
       "ragas": {
@@ -3854,7 +3854,7 @@
         "kb_billing_cycle",
         "kb_password_reset"
       ],
-      "latency": 0.0394,
+      "latency": 0.0459,
       "tokens_used": 85,
       "cost_usd": 0.00017,
       "ragas": {
@@ -3906,7 +3906,7 @@
         "kb_refund_policy",
         "kb_password_reset"
       ],
-      "latency": 0.0437,
+      "latency": 0.0479,
       "tokens_used": 87,
       "cost_usd": 0.000174,
       "ragas": {
@@ -3960,7 +3960,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0426,
+      "latency": 0.0474,
       "tokens_used": 106,
       "cost_usd": 0.000212,
       "ragas": {
@@ -4015,7 +4015,7 @@
         "kb_data_retention",
         "kb_password_reset"
       ],
-      "latency": 0.0416,
+      "latency": 0.0469,
       "tokens_used": 108,
       "cost_usd": 0.000216,
       "ragas": {
@@ -4070,7 +4070,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.04,
+      "latency": 0.0462,
       "tokens_used": 96,
       "cost_usd": 0.000192,
       "ragas": {
@@ -4123,7 +4123,7 @@
         "kb_sla",
         "kb_password_reset"
       ],
-      "latency": 0.0421,
+      "latency": 0.0472,
       "tokens_used": 73,
       "cost_usd": 0.000146,
       "ragas": {
@@ -4177,7 +4177,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.041,
+      "latency": 0.0467,
       "tokens_used": 102,
       "cost_usd": 0.000204,
       "ragas": {
@@ -4230,7 +4230,7 @@
         "kb_model_eval",
         "kb_password_reset"
       ],
-      "latency": 0.0405,
+      "latency": 0.0464,
       "tokens_used": 81,
       "cost_usd": 0.000162,
       "ragas": {
@@ -4280,7 +4280,7 @@
       "retrieved_ids": [
         "kb_password_reset"
       ],
-      "latency": 0.0424,
+      "latency": 0.0456,
       "tokens_used": 65,
       "cost_usd": 0.00013,
       "ragas": {
@@ -4383,7 +4383,7 @@
         "kb_billing_cycle",
         "kb_password_reset"
       ],
-      "latency": 0.0436,
+      "latency": 0.0458,
       "tokens_used": 85,
       "cost_usd": 0.00017,
       "ragas": {
@@ -4435,7 +4435,7 @@
         "kb_refund_policy",
         "kb_password_reset"
       ],
-      "latency": 0.0476,
+      "latency": 0.0477,
       "tokens_used": 87,
       "cost_usd": 0.000174,
       "ragas": {
@@ -4489,7 +4489,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0473,
+      "latency": 0.0472,
       "tokens_used": 106,
       "cost_usd": 0.000212,
       "ragas": {
@@ -4544,7 +4544,7 @@
         "kb_data_retention",
         "kb_password_reset"
       ],
-      "latency": 0.047,
+      "latency": 0.0467,
       "tokens_used": 108,
       "cost_usd": 0.000216,
       "ragas": {
@@ -4599,7 +4599,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.045,
+      "latency": 0.046,
       "tokens_used": 96,
       "cost_usd": 0.000192,
       "ragas": {
@@ -4652,7 +4652,7 @@
         "kb_sla",
         "kb_password_reset"
       ],
-      "latency": 0.0471,
+      "latency": 0.047,
       "tokens_used": 73,
       "cost_usd": 0.000146,
       "ragas": {
@@ -4706,7 +4706,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0468,
+      "latency": 0.0465,
       "tokens_used": 102,
       "cost_usd": 0.000204,
       "ragas": {
@@ -4809,7 +4809,7 @@
       "retrieved_ids": [
         "kb_password_reset"
       ],
-      "latency": 0.0416,
+      "latency": 0.0456,
       "tokens_used": 65,
       "cost_usd": 0.00013,
       "ragas": {
@@ -4860,7 +4860,7 @@
         "kb_mfa_setup",
         "kb_password_reset"
       ],
-      "latency": 0.0462,
+      "latency": 0.0484,
       "tokens_used": 78,
       "cost_usd": 0.000156,
       "ragas": {
@@ -4912,7 +4912,7 @@
         "kb_billing_cycle",
         "kb_password_reset"
       ],
-      "latency": 0.0422,
+      "latency": 0.046,
       "tokens_used": 85,
       "cost_usd": 0.00017,
       "ragas": {
@@ -4964,7 +4964,7 @@
         "kb_refund_policy",
         "kb_password_reset"
       ],
-      "latency": 0.0468,
+      "latency": 0.0487,
       "tokens_used": 87,
       "cost_usd": 0.000174,
       "ragas": {
@@ -5018,7 +5018,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0457,
+      "latency": 0.048,
       "tokens_used": 106,
       "cost_usd": 0.000212,
       "ragas": {
@@ -5073,7 +5073,7 @@
         "kb_data_retention",
         "kb_password_reset"
       ],
-      "latency": 0.0446,
+      "latency": 0.0474,
       "tokens_used": 108,
       "cost_usd": 0.000216,
       "ragas": {
@@ -5128,7 +5128,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0429,
+      "latency": 0.0463,
       "tokens_used": 96,
       "cost_usd": 0.000192,
       "ragas": {
@@ -5181,7 +5181,7 @@
         "kb_sla",
         "kb_password_reset"
       ],
-      "latency": 0.0452,
+      "latency": 0.0477,
       "tokens_used": 73,
       "cost_usd": 0.000146,
       "ragas": {
@@ -5235,7 +5235,7 @@
         "kb_password_reset",
         "kb_export_data"
       ],
-      "latency": 0.0441,
+      "latency": 0.047,
       "tokens_used": 102,
       "cost_usd": 0.000204,
       "ragas": {
@@ -5288,7 +5288,7 @@
         "kb_model_eval",
         "kb_password_reset"
       ],
-      "latency": 0.0434,
+      "latency": 0.0467,
       "tokens_used": 81,
       "cost_usd": 0.000162,
       "ragas": {
@@ -5338,7 +5338,7 @@
       "retrieved_ids": [
         "kb_password_reset"
       ],
-      "latency": 0.0404,
+      "latency": 0.0436,
       "tokens_used": 65,
       "cost_usd": 0.00013,
       "ragas": {
@@ -5389,7 +5389,7 @@
         "kb_mfa_setup",
         "kb_password_reset"
       ],
-      "latency": 0.0459,
+      "latency": 0.0464,
       "tokens_used": 78,
       "cost_usd": 0.000156,
       "ragas": {
@@ -5441,7 +5441,7 @@
         "kb_billing_cycle",
         "kb_password_reset"
       ],
-      "latency": 0.041,
+      "latency": 0.044,
       "tokens_used": 85,
       "cost_usd": 0.00017,
       "ragas": {
@@ -5493,7 +5493,7 @@
         "kb_refund_policy",
         "kb_password_reset"
       ],
-      "latency": 0.047,
+      "latency": 0.0467,
       "tokens_used": 87,
       "cost_usd": 0.000174,
       "ragas": {
@@ -5547,7 +5547,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0453,
+      "latency": 0.046,
       "tokens_used": 106,
       "cost_usd": 0.000212,
       "ragas": {
@@ -5602,7 +5602,7 @@
         "kb_data_retention",
         "kb_password_reset"
       ],
-      "latency": 0.0441,
+      "latency": 0.0453,
       "tokens_used": 108,
       "cost_usd": 0.000216,
       "ragas": {
@@ -5657,7 +5657,7 @@
         "kb_password_reset",
         "kb_model_eval"
       ],
-      "latency": 0.0415,
+      "latency": 0.0443,
       "tokens_used": 96,
       "cost_usd": 0.000192,
       "ragas": {
@@ -5710,7 +5710,7 @@
         "kb_sla",
         "kb_password_reset"
       ],
-      "latency": 0.0447,
+      "latency": 0.0457,
       "tokens_used": 73,
       "cost_usd": 0.000146,
       "ragas": {
@@ -5764,7 +5764,7 @@
         "kb_export_data",
         "kb_model_eval"
       ],
-      "latency": 0.0432,
+      "latency": 0.045,
       "tokens_used": 103,
       "cost_usd": 0.000206,
       "ragas": {
@@ -5817,7 +5817,7 @@
         "kb_support_hours",
         "kb_refund_policy"
       ],
-      "latency": 0.0423,
+      "latency": 0.0447,
       "tokens_used": 83,
       "cost_usd": 0.000166,
       "ragas": {
@@ -5863,7 +5863,7 @@
       "agent_response": "I do not know based on the provided documentation. Please provide relevant policy context.",
       "contexts": [],
       "retrieved_ids": [],
-      "latency": 0.0393,
+      "latency": 0.0434,
       "tokens_used": 40,
       "cost_usd": 8e-05,
       "ragas": {
@@ -5904,7 +5904,7 @@
       "agent_response": "I do not know based on the provided documentation. Please provide relevant policy context.",
       "contexts": [],
       "retrieved_ids": [],
-      "latency": 0.0416,
+      "latency": 0.045,
       "tokens_used": 39,
       "cost_usd": 7.8e-05,
       "ragas": {
@@ -5945,7 +5945,7 @@
       "agent_response": "The question is ambiguous. Please clarify whether you mean reset links, exports, deleted data, payment, or account access.",
       "contexts": [],
       "retrieved_ids": [],
-      "latency": 0.0395,
+      "latency": 0.0435,
       "tokens_used": 42,
       "cost_usd": 8.4e-05,
       "ragas": {
@@ -5986,7 +5986,7 @@
       "agent_response": "The question is ambiguous. Please clarify whether you mean reset links, exports, deleted data, payment, or account access.",
       "contexts": [],
       "retrieved_ids": [],
-      "latency": 0.0417,
+      "latency": 0.0451,
       "tokens_used": 42,
       "cost_usd": 8.4e-05,
       "ragas": {
@@ -6035,7 +6035,7 @@
         "kb_refund_policy",
         "kb_data_retention"
       ],
-      "latency": 0.0413,
+      "latency": 0.0448,
       "tokens_used": 103,
       "cost_usd": 0.000206,
       "ragas": {
@@ -6088,7 +6088,7 @@
         "kb_data_retention",
         "kb_export_data"
       ],
-      "latency": 0.0407,
+      "latency": 0.0444,
       "tokens_used": 83,
       "cost_usd": 0.000166,
       "ragas": {
@@ -6140,7 +6140,7 @@
         "kb_export_data",
         "kb_password_reset"
       ],
-      "latency": 0.0396,
+      "latency": 0.0437,
       "tokens_used": 91,
       "cost_usd": 0.000182,
       "ragas": {
@@ -6192,7 +6192,7 @@
         "kb_mfa_setup",
         "kb_password_reset"
       ],
-      "latency": 0.041,
+      "latency": 0.0446,
       "tokens_used": 79,
       "cost_usd": 0.000158,
       "ragas": {
@@ -6246,7 +6246,7 @@
         "kb_api_rate_limit",
         "kb_support_hours"
       ],
-      "latency": 0.0403,
+      "latency": 0.0441,
       "tokens_used": 110,
       "cost_usd": 0.00022,
       "ragas": {
@@ -6302,7 +6302,7 @@
         "kb_api_rate_limit",
         "kb_model_eval"
       ],
-      "latency": 0.04,
+      "latency": 0.0439,
       "tokens_used": 72,
       "cost_usd": 0.000144,
       "ragas": {
